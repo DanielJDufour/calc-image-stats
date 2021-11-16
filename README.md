@@ -1,6 +1,11 @@
 # calc-image-stats
 Calculate Band Statistics for an Image
 
+# features
+🦺 memory-safe: uses iterators to avoid copying pixel value arrays  
+🚀 fast: uses [calc-stats](https://github.com/danieljdufour/calc-stats), which avoids intermediary calculations  
+♦️  dynamic: works on numerical image data in any layout (by using [xdim](https://github.com/danieljdufour/xdim))
+
 # bash
 ```bash
 npm install calc-image-stats
