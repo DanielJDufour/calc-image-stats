@@ -28,7 +28,7 @@
   "dependencies": {
     "calc-stats": "^0.4.1",
     "guess-image-layout": "^0.0.3",
-    "xdim": "link:../xdim"
+    "xdim": "^1.4.0"
   },
   "devDependencies": {
     "find-and-read": "^1.1.0",
