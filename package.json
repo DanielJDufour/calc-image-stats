@@ -31,11 +31,11 @@
   "dependencies": {
     "calc-stats": "^2.0.0",
     "guess-image-layout": "^0.0.3",
-    "xdim": "^1.4.0"
+    "xdim": "^1.5.1"
   },
   "devDependencies": {
     "find-and-read": "^1.1.0",
-    "flug": "^2.1.2",
+    "flug": "^2.2.0",
     "readim": "^0.0.2"
   }
 }
