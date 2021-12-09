@@ -33,12 +33,16 @@ stats will be the following object:
   bands: [
     {
       // red band
+      count: 100,
+      valid: 100,
+      invalid: 0,
       median: 87,
       min: 9,
       max: 220,
       sum: 10489,
       range: 211,
       mean: 104.89,
+      std: 53.908792418305936,
       modes: [51, 69, 87, 190],
       mode: 99.25
     },
@@ -46,12 +50,16 @@ stats will be the following object:
     { ... }, // blue band
     {
       // alpha band
+      count: 100,
+      valid: 100,
+      invalid: 0,
       median: 255,
       min: 255,
       max: 255,
       sum: 25500,
       range: 0,
       mean: 255,
+      std: 0,
       modes: [255],
       mode: 255
     }

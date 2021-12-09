@@ -31,7 +31,6 @@ function calcImageStats(
     const rect = { band: [bandIndex, bandIndex] };
     const sizes = { band: bands, column: width, row: height };
     const band = xdim.iterClip({ data: values, layout, rect, sizes });
-
     return calcStats(band, rest);
   });
 

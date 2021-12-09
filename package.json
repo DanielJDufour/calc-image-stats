@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/DanielJDufour/calc-image-stats#readme",
   "dependencies": {
-    "calc-stats": "^0.4.1",
+    "calc-stats": "^2.0.0",
     "guess-image-layout": "^0.0.3",
     "xdim": "^1.4.0"
   },
