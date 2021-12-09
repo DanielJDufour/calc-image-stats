@@ -1,6 +1,6 @@
 {
   "name": "calc-image-stats",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Calculate Band Statistics for an Image",
   "main": "calc-image-stats.js",
   "files": [
