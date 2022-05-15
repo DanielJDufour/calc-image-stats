@@ -6,9 +6,12 @@
   "files": [
     "calc-image-stats.js"
   ],
+  "types": "./calc-image-stats.d.ts",
   "scripts": {
-    "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write *.js",
-    "test": "node test.js"
+    "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write *.js *.ts",
+    "test": "npm run test:calc && npm run test:types",
+    "test:calc": "node test.js",
+    "test:types": "npx tsc calc-image-stats.d.ts"
   },
   "repository": {
     "type": "git",
