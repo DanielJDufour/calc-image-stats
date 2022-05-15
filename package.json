@@ -4,7 +4,8 @@
   "description": "Calculate Band Statistics for an Image",
   "main": "calc-image-stats.js",
   "files": [
-    "calc-image-stats.js"
+    "calc-image-stats.js",
+    "calc-image-stats.d.ts"
   ],
   "types": "./calc-image-stats.d.ts",
   "scripts": {
