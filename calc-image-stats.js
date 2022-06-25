@@ -19,7 +19,13 @@ function calcImageStats(
 ) {
   // create iterators for bands
 
-  const result = guessImageLayout({ bands, data: values, height, width });
+  const result = guessImageLayout({
+    bands,
+    data: values,
+    height,
+    layout,
+    width
+  });
   bands ??= result.bands;
   height ??= result.height;
   layout ??= result.layout;
