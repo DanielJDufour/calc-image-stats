@@ -1,5 +1,5 @@
 # calc-image-stats
-Calculate Band Statistics for an Image
+> Calculate Band Statistics for an Image
 
 # features
 🦺 memory-safe: uses iterators to avoid copying pixel value arrays  

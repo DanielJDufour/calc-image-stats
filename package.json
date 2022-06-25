@@ -9,10 +9,11 @@
   ],
   "types": "./calc-image-stats.d.ts",
   "scripts": {
+    "f": "npm run format",
     "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write *.js *.ts",
-    "test": "npm run test:calc && npm run test:types",
-    "test:calc": "node test.js",
-    "test:types": "npx tsc calc-image-stats.d.ts"
+    "test": "npm run test:js && npm run test:ts",
+    "test:js": "node test.js",
+    "test:ts": "npx ts-node test.ts"
   },
   "repository": {
     "type": "git",
@@ -35,11 +36,11 @@
   "dependencies": {
     "calc-stats": "^2.0.0",
     "guess-image-layout": "^0.0.3",
-    "xdim": "^1.5.1"
+    "xdim": "^1.6.0"
   },
   "devDependencies": {
-    "find-and-read": "^1.1.0",
-    "flug": "^2.2.0",
+    "find-and-read": "^1.2.0",
+    "flug": "^2.3.1",
     "readim": "^0.0.2"
   }
 }

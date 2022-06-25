@@ -37,4 +37,22 @@ function calcImageStats(
   return { depth: bands, height, width, bands: bandStats };
 }
 
-module.exports = calcImageStats;
+if (typeof define === "function" && define.amd) {
+  define(function () {
+    return calcImageStats;
+  });
+}
+
+if (typeof module === "object") {
+  module.exports = calcImageStats;
+  module.exports.default = calcImageStats;
+  module.exports.calcImageStats = calcImageStats;
+}
+
+if (typeof self === "object") {
+  self.calcImageStats = calcImageStats;
+}
+
+if (typeof window === "window") {
+  self.calcImageStats = calcImageStats;
+}
