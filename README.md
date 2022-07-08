@@ -1,18 +1,19 @@
 # calc-image-stats
 > Calculate Band Statistics for an Image
 
-# features
+## features
 🦺 memory-safe: uses iterators to avoid copying pixel value arrays  
 🚀 fast: uses [calc-stats](https://github.com/danieljdufour/calc-stats), which avoids intermediary calculations  
 ♦️  dynamic: works on numerical image data in any layout (by using [xdim](https://github.com/danieljdufour/xdim))  
+🧭 precise: support for super precise calculations (by using [preciso](https://github.com/danieljdufour/preciso))  
 ⭐ type-safe: supports [TypeScript](https://www.typescriptlang.org/)
 
-# bash
+## bash
 ```bash
 npm install calc-image-stats
 ```
 
-# usage
+## basic usage
 ```js
 import calcImageStats from "calc-image-stats";
 
@@ -66,4 +67,26 @@ stats will be the following object:
     }
   ]
 };
+```
+
+## advanced usage
+```js
+const stats = calcImageStats(data, {
+   height: 123456,
+   precise: true, // calculate using super precise numerical strings
+   stats: ["variance"], // choose which stats to calculate
+   width: 123456
+});
+
+{
+  depth: 1, // only 1 band of data
+  height: 123456,
+  width: 123456,
+  bands: [
+    {
+      // super precise result because we set precise to true
+      variance: "1321.41725347154236125321387514273412736"
+    }
+  ]
+}   
 ```
