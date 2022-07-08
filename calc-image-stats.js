@@ -65,6 +65,6 @@ if (typeof self === "object") {
   self.calcImageStats = calcImageStats;
 }
 
-if (typeof window === "window") {
+if (typeof window === "object") {
   self.calcImageStats = calcImageStats;
 }
