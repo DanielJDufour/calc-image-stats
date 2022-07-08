@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/DanielJDufour/calc-image-stats#readme",
   "dependencies": {
-    "calc-stats": "^2.0.0",
+    "calc-stats": "^2.1.0",
     "guess-image-layout": "^0.1.0",
     "xdim": "^1.6.0"
   },

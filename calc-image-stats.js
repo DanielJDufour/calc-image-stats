@@ -10,14 +10,20 @@ const range = ct => new Array(ct).fill(0).map((_, i) => i);
  * @param {options} options - Options
  * @param {options} options.bands - number of bands (3 for RGB, 4 for RGBA)
  * @param {options} options.height - height of image
+ * @param {options} options.precise - calculate using floating point arithmetic or precise numerical strings. default is false
+ * @param {options} options.stats - array of stats to calculate. see https://github.com/danieljdufour/calc-stats#specify-calculations
  * @param {options} options.width - width of image
  * @param {options} options.layout - layout of values (using xdim layout syntax)
  */
 function calcImageStats(
   values,
-  { bands, height, width, layout, ...rest } = {}
+  { bands, height, precise = false, stats, width, layout, ...rest } = {}
 ) {
-  // create iterators for bands
+  if (typeof values.then === "function") {
+    throw new Error(
+      "[calc-image-stats] you passed in a promise as the data values.  please resolve the promise first before calling calcImageStats"
+    );
+  }
 
   const result = guessImageLayout({
     bands,
@@ -37,7 +43,7 @@ function calcImageStats(
     const rect = { band: [bandIndex, bandIndex] };
     const sizes = { band: bands, column: width, row: height };
     const band = xdim.iterClip({ data: values, layout, rect, sizes });
-    return calcStats(band, rest);
+    return calcStats(band, { precise, stats, ...rest });
   });
 
   return { depth: bands, height, width, bands: bandStats };

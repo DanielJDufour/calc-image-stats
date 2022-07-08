@@ -25,6 +25,8 @@ export type ImageData = number[] | number[][] | number[][][];
 export type Options = {
   bands?: number;
   height?: number;
+  precise?: boolean;
+  stats?: string[];
   layout?: string;
   width?: number;
   [rest: string]: any;
