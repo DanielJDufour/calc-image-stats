@@ -106,3 +106,25 @@ test("basic", async ({ eq }) => {
   });
   eq(calcImageStats(brc, { stats: calc_these_stats }), expected);
 });
+
+test("precise variance", async ({ eq }) => {
+  const buf = findAndRead("flower.png");
+  const { height, width, pixels } = await readim({ data: buf });
+  const stats = calcImageStats(pixels, {
+    height,
+    precise: true,
+    width,
+    stats: ["variance"]
+  });
+  eq(stats, {
+    depth: 4,
+    height: 10,
+    width: 10,
+    bands: [
+      { variance: "2906.1579" },
+      { variance: "2153.8659" },
+      { variance: "3066.1564" },
+      { variance: "0" }
+    ]
+  });
+});
