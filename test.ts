@@ -105,4 +105,8 @@ test("basic", async ({ eq }) => {
     }
   });
   eq(calcImageStats(brc, { stats: calc_these_stats }), expected);
+  eq(calcImageStats(brc, { stats: ["uniques"] }).bands[0].uniques?.length, 70);
+  eq(calcImageStats(brc, { precise: true, stats: ["variance"] }).bands[0], {
+    variance: "2906.1579"
+  });
 });

@@ -1,38 +1,38 @@
-export type BandStats = {
-  count?: number;
-  valid?: number;
-  invalid?: number;
-  median?: number;
-  min?: number;
-  max?: number;
-  sum?: number;
-  range?: number;
-  mean?: number;
-  std?: number;
-  modes?: number[];
-  mode?: number;
+export type BandStats<P extends boolean> = {
+  count?: P extends true ? string : number;
+  valid?: P extends true ? string : number;
+  invalid?: P extends true ? string : number;
+  median?: P extends true ? string : number;
+  min?: P extends true ? string : number;
+  max?: P extends true ? string : number;
+  sum?: P extends true ? string : number;
+  range?: P extends true ? string : number;
+  mean?: P extends true ? string : number;
+  std?: P extends true ? string : number;
+  modes?: P extends true ? string[] : number[];
+  mode?: P extends true ? string : number;
+  variance?: P extends true ? string : number;
+  uniques?: P extends true ? string[] : number[];
 };
 
-export type ImageStats = {
+export type ImageStats<P extends boolean> = {
   depth: number;
   height: number;
   width: number;
-  bands: BandStats[];
+  bands: BandStats<P>[];
 };
 
 export type ImageData = number[] | number[][] | number[][][];
 
-export type Options = {
-  bands?: number;
-  height?: number;
-  precise?: boolean;
-  stats?: string[];
-  layout?: string;
-  width?: number;
-  [rest: string]: any;
-};
-
-export default function calcImageStats(
+export default function calcImageStats<P extends boolean>(
   data: ImageData,
-  options?: Options
-): ImageStats;
+  options?: {
+    bands?: number;
+    height?: number;
+    precise?: P;
+    stats?: string[];
+    layout?: string;
+    width?: number;
+    [rest: string]: any;
+  }
+): P extends true ? ImageStats<P> : ImageStats<false>;
