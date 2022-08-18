@@ -22,7 +22,26 @@ export type ImageStats<P extends boolean> = {
   bands: BandStats<P>[];
 };
 
-export type ImageData = number[] | number[][] | number[][][];
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Uint8ClampedArray
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array
+  | BigInt64Array
+  | BigUint64Array;
+
+export type ImageData =
+  | number[]
+  | number[][]
+  | number[][][]
+  | TypedArray
+  | TypedArray[]
+  | TypedArray[][];
 
 export default function calcImageStats<P extends boolean>(
   data: ImageData,

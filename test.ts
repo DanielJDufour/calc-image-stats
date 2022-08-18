@@ -87,7 +87,7 @@ test("basic", async ({ eq }) => {
     "modes",
     "mode"
   ];
-  const stats = calcImageStats(pixels, {
+  const stats = calcImageStats(pixels as Uint8Array, {
     height,
     width,
     stats: calc_these_stats
