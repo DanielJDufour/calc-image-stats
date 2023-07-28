@@ -12,6 +12,7 @@
     "build": "esbuild ./src/calc-image-stats.js --target=es2016 --outfile=./calc-image-stats.js",
     "f": "npm run format",
     "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write *.js *.ts",
+    "prepublishOnly": "npm run format && npm run build",
     "test": "npm run test:js && npm run test:ts",
     "test:js": "node test.js",
     "test:ts": "npx ts-node test.ts"
