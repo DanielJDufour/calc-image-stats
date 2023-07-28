@@ -9,6 +9,7 @@
   ],
   "types": "./calc-image-stats.d.ts",
   "scripts": {
+    "build": "esbuild ./src/calc-image-stats.js --target=es2016 --outfile=./calc-image-stats.js",
     "f": "npm run format",
     "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write *.js *.ts",
     "test": "npm run test:js && npm run test:ts",
@@ -39,6 +40,7 @@
     "xdim": "^1.10.1"
   },
   "devDependencies": {
+    "esbuild": "^0.18.17",
     "find-and-read": "^1.2.0",
     "flug": "^2.6.0",
     "readim": "^1.0.0"

@@ -3,7 +3,7 @@ const readim = require("readim");
 const findAndRead = require("find-and-read");
 const xdim = require("xdim");
 
-const calcImageStats = require("./calc-image-stats.js");
+const calcImageStats = require("./src/calc-image-stats.js");
 
 const expected = {
   depth: 4,

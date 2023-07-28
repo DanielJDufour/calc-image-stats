@@ -1,5 +1,5 @@
 import test from "flug";
-import * as readim from "readim";
+import readim from "readim";
 import findAndRead from "find-and-read";
 import * as xdim from "xdim";
 
@@ -71,7 +71,7 @@ const expected = {
 
 test("basic", async ({ eq }) => {
   const buf = findAndRead("flower.png");
-  const { height, width, pixels } = await readim({ data: buf });
+  const { height, width, data: pixels } = await readim({ data: buf });
   const calc_these_stats = [
     "count",
     "invalid",
