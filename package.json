@@ -2,18 +2,20 @@
   "name": "calc-image-stats",
   "version": "0.8.0",
   "description": "Calculate Band Statistics for an Image",
-  "main": "calc-image-stats.js",
+  "main": "./dist/calc-image-stats.min.js",
   "files": [
-    "calc-image-stats.js",
-    "calc-image-stats.d.ts"
+    "calc-image-stats.d.ts",
+    "./src/calc-image-stats.js",
+    "./dist/calc-image-stats.min.js",
+    "./dist/calc-image-stats.min.js.map"
   ],
   "types": "./calc-image-stats.d.ts",
   "scripts": {
-    "build": "esbuild ./src/calc-image-stats.js --target=es2016 --outfile=./calc-image-stats.js",
+    "build": "esbuild ./src/calc-image-stats.js --minify --keep-names --sourcemap --target=es2016 --outfile=./dist/calc-image-stats.min.js",
     "f": "npm run format",
-    "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write *.js *.ts",
+    "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write src *.js *.ts",
     "prepublishOnly": "npm run format && npm run build",
-    "test": "npm run test:js && npm run test:ts",
+    "test": "npm run build && npm run test:js && npm run test:ts",
     "test:js": "node test.js",
     "test:ts": "npx ts-node test.ts"
   },
@@ -36,7 +38,7 @@
   },
   "homepage": "https://github.com/DanielJDufour/calc-image-stats#readme",
   "dependencies": {
-    "calc-stats": "^2.1.0",
+    "calc-stats": "^2.2.0",
     "guess-image-layout": "^0.1.0",
     "xdim": "^1.10.1"
   },

@@ -106,3 +106,4 @@ dist
 # Other files
 pnpm-lock.yaml
 calc-image-stats.js
+*bak*

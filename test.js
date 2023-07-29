@@ -1,9 +1,10 @@
+const fs = require("fs");
 const test = require("flug");
 const readim = require("readim");
 const findAndRead = require("find-and-read");
 const xdim = require("xdim");
 
-const calcImageStats = require("./src/calc-image-stats.js");
+const calcImageStats = require("./dist/calc-image-stats.min.js");
 
 const expected = {
   depth: 4,
@@ -71,7 +72,7 @@ const expected = {
 
 test("basic", async ({ eq }) => {
   const buf = findAndRead("flower.png");
-  const { height, width, pixels } = await readim({ data: buf });
+  const { height, width, data } = await readim({ data: buf });
   const calc_these_stats = [
     "count",
     "invalid",
@@ -87,7 +88,7 @@ test("basic", async ({ eq }) => {
     "modes",
     "mode"
   ];
-  const stats = calcImageStats(pixels, {
+  const stats = calcImageStats(data, {
     height,
     width,
     stats: calc_these_stats
@@ -95,7 +96,7 @@ test("basic", async ({ eq }) => {
   eq(stats, expected);
 
   const { data: brc } = xdim.transform({
-    data: pixels,
+    data,
     from: "[row,column,band]",
     to: "[band][row][column]",
     sizes: {
@@ -128,3 +129,19 @@ test("precise variance", async ({ eq }) => {
     ]
   });
 });
+
+// test("large", ({ eq }) => {
+//   const band = JSON.parse(fs.readFileSync("./data/band.json")).map(row =>
+//     Uint8Array.from(row)
+//   );
+//   const bands = [band, band, band];
+//   const stats = calcImageStats(bands, {
+//     height: 3974,
+//     layout: "[band][row][column]",
+//     noData: null,
+//     precise: false,
+//     stats: ["max", "min", "range"],
+//     width: 7322
+//   });
+//   console.log("stats:", stats);
+// });

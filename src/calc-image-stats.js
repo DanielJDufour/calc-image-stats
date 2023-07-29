@@ -40,10 +40,31 @@ function calcImageStats(
   const bandRange = range(bands);
 
   const bandStats = bandRange.map(bandIndex => {
-    const rect = { band: [bandIndex, bandIndex] };
-    const sizes = { band: bands, column: width, row: height };
-    const band = xdim.iterClip({ data: values, layout, rect, sizes });
-    return calcStats(band, { precise, stats, ...rest });
+    let band;
+    const options = { precise, stats, ...rest };
+    if (["[band][row,column]", "[band][column,row]"].includes(layout)) {
+      band = values[bandIndex];
+    } else if (
+      ["[band][row][column]", "[band][column][row]"].includes(layout)
+    ) {
+      band = values[bandIndex];
+      options.chunked = true;
+    } else if (
+      bands === 1 &&
+      [
+        "[band,row,column]",
+        "[row,column,band]",
+        "[column,band,row]",
+        "[column,row,band]"
+      ].includes(layout)
+    ) {
+      band = values;
+    } else {
+      const rect = { band: [bandIndex, bandIndex] };
+      const sizes = { band: bands, column: width, row: height };
+      band = xdim.iterClip({ data: values, layout, rect, sizes });
+    }
+    return calcStats(band, options);
   });
 
   return { depth: bands, height, width, bands: bandStats };

@@ -8,6 +8,7 @@ export type BandStats<P extends boolean> = {
   sum?: P extends true ? string : number;
   range?: P extends true ? string : number;
   mean?: P extends true ? string : number;
+  product?: P extends true ? string : number;
   std?: P extends true ? string : number;
   modes?: P extends true ? string[] : number[];
   mode?: P extends true ? string : number;

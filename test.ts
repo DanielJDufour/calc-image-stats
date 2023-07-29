@@ -3,7 +3,7 @@ import readim from "readim";
 import findAndRead from "find-and-read";
 import * as xdim from "xdim";
 
-import calcImageStats from "./calc-image-stats.js";
+import calcImageStats from ".";
 
 const expected = {
   depth: 4,
